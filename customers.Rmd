@@ -1,0 +1,34 @@
+---
+title: "Untitled"
+author: "Caroline Shepherd"
+date: "8/26/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Attach Packages
+
+library(tidyverse)
+library(here)
+library(janitor)
+
+```
+
+```{r}
+# Read in the data 
+
+locationdata <- read_csv(here("data", "customer_locations.csv")) 
+```
+
+```{r}
+# organizing data
+
+customer_location <- locationdata %>% 
+  mutate(percent = (orders / sum(orders))*100)
+
+```
+
