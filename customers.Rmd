@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(here)
 library(janitor)
+library(googlesheets4)
 
 ```
 
@@ -22,6 +23,8 @@ library(janitor)
 # Read in the data 
 
 locationdata <- read_csv(here("data", "customer_locations.csv")) 
+
+# locationdata1 <- read_sheet("https://docs.google.com/spreadsheets/d/1hVArbF54nCx9HZkVqmfll1ggb44hgmOoM18eUMYJdO8/edit?usp=sharing")
 ```
 
 ```{r}
@@ -36,6 +39,6 @@ customer_major_city <- customer_location %>%
    group_by(major_city) %>%
   summarize(total_orders = sum(orders))
 
-
+sum(customer_location$percent)
 ```
 
