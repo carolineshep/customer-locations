@@ -29,9 +29,13 @@ locationdata <- read_csv(here("data", "customer_locations.csv"))
 
 customer_location <- locationdata %>% 
   mutate(percent = (orders / sum(orders))*100) %>% 
-  group_by(major_city) %>%
   select(-...7) %>% 
   na.omit()
+
+customer_major_city <- customer_location %>% 
+   group_by(major_city) %>%
+  summarize(total_orders = sum(orders))
+
 
 ```
 
