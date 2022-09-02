@@ -37,7 +37,8 @@ customer_location <- locationdata %>%
 
 customer_major_city <- customer_location %>% 
    group_by(major_city) %>%
-  summarize(total_orders = sum(orders))
+  summarize(total_orders = sum(orders)) %>% 
+  mutate(percent = (total_orders / sum(total_orders))*100)
 
 sum(customer_location$percent)
 ```
